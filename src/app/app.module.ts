@@ -1,11 +1,19 @@
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { SharedModule } from './shared/shared.module';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+// Configuración del locale de la App
+import { registerLocaleData } from '@angular/common';
+import localeEsCL from '@angular/common/locales/es-CL';
+import localeJp from '@angular/common/locales/ja';
+
+registerLocaleData(localeEsCL);
+registerLocaleData(localeJp);
 
 @NgModule({
   declarations: [AppComponent],
@@ -15,7 +23,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     SharedModule,
     BrowserAnimationsModule,
   ],
-  providers: [],
+  providers: [{ provide: LOCALE_ID, useValue: 'es-CL' }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
